@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ElectraMagus — Developer · Hacker · Engineer</title>
+  <meta name="description" content="ElectraMagus — Full-stack developer, white-hat hacker, and electronics engineer. Building secure, production-grade software and hardware." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ========== CUSTOM CURSOR ========== -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ========== PARTICLE CANVAS ========== -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="nav-logo">
+      <span class="logo-bracket">&lt;</span>electra<span class="logo-accent">magus</span><span class="logo-bracket"> /&gt;</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" data-text="About">About</a></li>
+      <li><a href="#skills" data-text="Skills">Skills</a></li>
+      <li><a href="#projects" data-text="Projects">Projects</a></li>
+      <li><a href="#vision" data-text="Vision">Vision</a></li>
+      <li><a href="#contact" data-text="Contact">Contact</a></li>
+      <li><a href="#challenge" class="nav-cta">Challenge Me</a></li>
+    </ul>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-avatar-wrapper" data-animate="fade-in">
+        <div class="avatar-ring"></div>
+        <div class="avatar-ring avatar-ring--delayed"></div>
+        <img src="avatar.png" alt="ElectraMagus" class="hero-avatar" />
+        <div class="avatar-glitch-line"></div>
+      </div>
+      <div class="hero-text">
+        <p class="hero-greeting" data-animate="slide-up">Hello, I'm</p>
+        <h1 class="hero-name" data-animate="slide-up" data-delay="100">
+          <span class="glitch" data-text="ElectraMagus">ElectraMagus</span>
+        </h1>
+        <div class="hero-tagline" data-animate="slide-up" data-delay="200">
+          <span class="tagline-prefix">&gt;&gt;</span>
+          <span class="typewriter" id="typewriter"></span>
+          <span class="typewriter-cursor">|</span>
+        </div>
+        <p class="hero-desc" data-animate="slide-up" data-delay="300">
+          I build <strong>secure</strong>, <strong>production-grade</strong> software &amp; hardware.<br />
+          From mobile apps to embedded systems.
+        </p>
+        <div class="hero-actions" data-animate="slide-up" data-delay="400">
+          <a href="#projects" class="btn btn-primary">
+            <span class="btn-text">View My Work</span>
+            <span class="btn-icon">&rarr;</span>
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            <span class="btn-text">Let's Talk</span>
+          </a>
+        </div>
+        <div class="hero-stats" data-animate="slide-up" data-delay="500">
+          <div class="stat">
+            <span class="stat-number" data-count="50">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number" data-count="5">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Years Exp</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number" data-count="100">0</span><span class="stat-plus">%</span>
+            <span class="stat-label">Secure Code</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator" data-animate="fade-in" data-delay="800">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-header" data-animate="slide-up">
+        <span class="section-tag">&lt;about&gt;</span>
+        <h2 class="section-title">Who I Am</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text" data-animate="slide-right">
+          <div class="terminal">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">electramagus@portfolio:~</span>
+            </div>
+            <div class="terminal-body">
+              <p><span class="term-prompt">$</span> <span class="term-cmd">whoami</span></p>
+              <p class="term-output">A full-stack developer, white-hat hacker, and embedded systems engineer.</p>
+              <br />
+              <p><span class="term-prompt">$</span> <span class="term-cmd">cat philosophy.txt</span></p>
+              <p class="term-output">I believe in building things that <strong>work</strong>, things that are <strong>secure</strong>, and things that <strong>scale</strong>. Whether it's a mobile app handling financial data, a web platform serving thousands, or a microcontroller driving a robot — I approach every project with the same obsession for quality.</p>
+              <br />
+              <p><span class="term-prompt">$</span> <span class="term-cmd">cat why_challenge_me.txt</span></p>
+              <p class="term-output">Because I <strong>live for challenges</strong>. The harder the problem, the more I lean in. "Impossible" is just a word people use before I get involved. I've shipped real products, broken into secure systems (ethically), and built machines from scratch — not because I had to, but because <strong>someone said it couldn't be done</strong>.</p>
+              <br />
+              <p><span class="term-prompt">$</span> <span class="term-cursor">█</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="about-highlights" data-animate="slide-left">
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            </div>
+            <h3>Security First</h3>
+            <p>White-hat hacker mindset. Every line of code is written with security as the foundation — not a patch.</p>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </div>
+            <h3>Full Stack Power</h3>
+            <p>From frontend pixels to backend APIs to bare-metal firmware. I own the entire stack.</p>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+            </div>
+            <h3>Hardware + Software</h3>
+            <p>I bridge the gap between digital and physical. Apps, circuits, robots — I build across domains.</p>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <h3>Ship Fast, Ship Right</h3>
+            <p>I don't over-engineer. I don't under-deliver. I build what you need, when you need it — production-ready.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS ========== -->
+  <section class="section skills" id="skills">
+    <div class="container">
+      <div class="section-header" data-animate="slide-up">
+        <span class="section-tag">&lt;skills&gt;</span>
+        <h2 class="section-title">My Arsenal</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+        <!-- Software Development -->
+        <div class="skill-category" data-animate="scale-in">
+          <div class="skill-category-header">
+            <div class="skill-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </div>
+            <h3>Software Dev</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag" data-level="expert">Kotlin</span>
+            <span class="skill-tag" data-level="expert">Java</span>
+            <span class="skill-tag" data-level="expert">Python</span>
+            <span class="skill-tag" data-level="expert">JavaScript</span>
+            <span class="skill-tag" data-level="advanced">TypeScript</span>
+            <span class="skill-tag" data-level="advanced">Rust</span>
+            <span class="skill-tag" data-level="expert">C / C++</span>
+            <span class="skill-tag" data-level="advanced">Go</span>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">Android (Kotlin/Java)</div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="95"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">Web (Full Stack)</div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">Backend / APIs</div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="92"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cyber Security -->
+        <div class="skill-category" data-animate="scale-in" data-delay="100">
+          <div class="skill-category-header">
+            <div class="skill-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <h3>Cyber Security</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag" data-level="expert">Penetration Testing</span>
+            <span class="skill-tag" data-level="expert">Network Security</span>
+            <span class="skill-tag" data-level="advanced">Reverse Engineering</span>
+            <span class="skill-tag" data-level="expert">Vulnerability Assessment</span>
+            <span class="skill-tag" data-level="advanced">Cryptography</span>
+            <span class="skill-tag" data-level="expert">Secure Architecture</span>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">Offensive Security</div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="93"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">Secure Code Practices</div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="96"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">Threat Modeling</div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="88"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Electronics & Embedded -->
+        <div class="skill-category" data-animate="scale-in" data-delay="200">
+          <div class="skill-category-header">
+            <div class="skill-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+            </div>
+            <h3>Electronics &amp; Embedded</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag" data-level="expert">Arduino</span>
+            <span class="skill-tag" data-level="expert">ESP32 / ESP8266</span>
+            <span class="skill-tag" data-level="advanced">Raspberry Pi</span>
+            <span class="skill-tag" data-level="expert">STM32</span>
+            <span class="skill-tag" data-level="expert">PCB Design</span>
+            <span class="skill-tag" data-level="advanced">FPGA</span>
+            <span class="skill-tag" data-level="expert">Robotics</span>
+            <span class="skill-tag" data-level="advanced">IoT Protocols</span>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">Microcontrollers</div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="94"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">Circuit Design</div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="88"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">Robotics Systems</div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="90"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Dev -->
+        <div class="skill-category" data-animate="scale-in" data-delay="300">
+          <div class="skill-category-header">
+            <div class="skill-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            </div>
+            <h3>Mobile Development</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag" data-level="expert">Android Native</span>
+            <span class="skill-tag" data-level="expert">Jetpack Compose</span>
+            <span class="skill-tag" data-level="advanced">React Native</span>
+            <span class="skill-tag" data-level="advanced">Flutter</span>
+            <span class="skill-tag" data-level="expert">Material Design</span>
+            <span class="skill-tag" data-level="expert">REST APIs</span>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">Android Native</div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="97"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">Cross-Platform</div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="82"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">App Architecture</div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="93"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS ========== -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <div class="section-header" data-animate="slide-up">
+        <span class="section-tag">&lt;projects&gt;</span>
+        <h2 class="section-title">Battle-Tested Work</h2>
+        <div class="section-line"></div>
+        <p class="section-subtitle">Real products. Real users. Real results.</p>
+      </div>
+
+      <!-- Featured Project: Mesha -->
+      <div class="project-featured" data-animate="slide-up">
+        <div class="project-featured-badge">★ FEATURED PROJECT</div>
+        <div class="project-featured-content">
+          <div class="project-featured-info">
+            <h3 class="project-featured-title">Mesha</h3>
+            <p class="project-featured-tagline">Financial Tracker — App · Server · Web</p>
+            <p class="project-featured-desc">
+              A complete financial tracking ecosystem built from the ground up. Native Android app with a secure backend server and a responsive web dashboard. Handles sensitive financial data with bank-grade security practices — encrypted communications, secure auth, and hardened APIs.
+            </p>
+            <div class="project-featured-tech">
+              <span>Kotlin</span>
+              <span>Node.js</span>
+              <span>PostgreSQL</span>
+              <span>REST API</span>
+              <span>JWT Auth</span>
+              <span>Encryption</span>
+            </div>
+            <div class="project-featured-links">
+              <a href="https://play.google.com/store/apps/details?id=com.mesha.offline" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                <svg class="btn-playstore" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 010 1.38l-2.302 2.302L15.396 13l2.302-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.635-8.635z"/></svg>
+                <span class="btn-text">Try Out Mesha</span>
+                <span class="btn-icon">↗</span>
+              </a>
+              <a href="https://mesha.dzovah.com" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+                <span class="btn-text">Visit Website</span>
+                <span class="btn-icon">↗</span>
+              </a>
+            </div>
+          </div>
+          <div class="project-featured-visual">
+            <div class="mockup-phone">
+              <div class="mockup-screen mockup-screen--real">
+                <img src="mesha-screenshot.jpg" alt="Mesha App — Financial Tracker Dashboard" class="mockup-real-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Grid -->
+      <div class="projects-grid">
+        <div class="project-card" data-animate="slide-up" data-delay="100">
+          <div class="project-card-header">
+            <div class="project-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div class="project-card-links">
+              <a href="https://github.com/electramagus" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h4 class="project-card-title">Security Tools & Hacks</h4>
+          <p class="project-card-desc">Collection of white-hat security tools, vulnerability scanners, and ethical hacking utilities. Built for defense through understanding offense.</p>
+          <div class="project-card-tech">
+            <span>Python</span>
+            <span>C</span>
+            <span>Bash</span>
+            <span>Networking</span>
+          </div>
+        </div>
+
+        <div class="project-card" data-animate="slide-up" data-delay="200">
+          <div class="project-card-header">
+            <div class="project-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+            </div>
+            <div class="project-card-links">
+              <a href="https://github.com/electramagus" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h4 class="project-card-title">Self-Driving Toy Cars</h4>
+          <p class="project-card-desc">Autonomous & remote-controlled vehicles with custom PCBs, motor drivers, and wireless communication. Both wired and wireless variants.</p>
+          <div class="project-card-tech">
+            <span>C++</span>
+            <span>ESP32</span>
+            <span>PCB Design</span>
+            <span>Robotics</span>
+          </div>
+        </div>
+
+        <div class="project-card" data-animate="slide-up" data-delay="300">
+          <div class="project-card-header">
+            <div class="project-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            </div>
+            <div class="project-card-links">
+              <a href="https://github.com/electramagus" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h4 class="project-card-title">Smart Lighting System</h4>
+          <p class="project-card-desc">IoT-based smart lighting with app control, scheduling, ambient sensing, and custom firmware. Built from schematics to software.</p>
+          <div class="project-card-tech">
+            <span>IoT</span>
+            <span>ESP8266</span>
+            <span>MQTT</span>
+            <span>Android</span>
+          </div>
+        </div>
+
+        <div class="project-card" data-animate="slide-up" data-delay="400">
+          <div class="project-card-header">
+            <div class="project-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z"/></svg>
+            </div>
+            <div class="project-card-links">
+              <a href="https://github.com/electramagus" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h4 class="project-card-title">Custom Sound Systems</h4>
+          <p class="project-card-desc">Designed and built custom audio amplifier circuits and enclosures with Bluetooth integration and equalizer tuning.</p>
+          <div class="project-card-tech">
+            <span>Analog Design</span>
+            <span>Bluetooth</span>
+            <span>Audio DSP</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="projects-cta" data-animate="fade-in">
+        <a href="https://github.com/electramagus" target="_blank" rel="noopener" class="btn btn-outline">
+          <span class="btn-text">See All Projects on GitHub</span>
+          <span class="btn-icon">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CHALLENGE ME ========== -->
+  <section class="cta-banner" id="challenge" data-animate="fade-in">
+    <div class="container">
+      <div class="cta-content">
+        <div class="cta-badge">⚡ BRING IT ON</div>
+        <h2 class="cta-title">Got a Tough Challenge?<br /><span>I Live For Those.</span></h2>
+        <p class="cta-desc">Got a project idea you can't bring to life? A problem no one else can crack? A build everyone says is "too complex"? That's exactly where I come alive. I don't shy away from hard things — <strong>I chase them</strong>. Software, hardware, security — throw it at me.</p>
+        <div class="cta-challenge-points">
+          <div class="cta-point">
+            <span class="cta-point-icon"></span>
+            <span>"It's too complex" — My favorite sentence to prove wrong</span>
+          </div>
+          <div class="cta-point">
+            <span class="cta-point-icon"></span>
+            <span>"Make it unhackable" — Say less, I'm already on it</span>
+          </div>
+          <div class="cta-point">
+            <span class="cta-point-icon"></span>
+            <span>"Can you build both the hardware and software?" — Watch me</span>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-primary btn-lg">
+          <span class="btn-text">Challenge Me Now</span>
+          <span class="btn-icon">&rarr;</span>
+        </a>
+      </div>
+    </div>
+    <div class="cta-grid-bg"></div>
+  </section>
+
+  <!-- ========== VISION & GOALS ========== -->
+  <section class="section vision" id="vision">
+    <div class="container">
+      <div class="section-header" data-animate="slide-up">
+        <span class="section-tag">&lt;vision&gt;</span>
+        <h2 class="section-title">The Bigger Picture</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="vision-layout">
+        <div class="vision-main" data-animate="slide-right">
+          <div class="vision-quote-mark">&ldquo;</div>
+          <h3 class="vision-headline">Technology should not just come <em>to</em> Africa.<br/>It should come <em>from</em> Africa.</h3>
+          <div class="vision-body">
+            <p>I'm not just building projects — I'm building toward something much bigger. My driving force is <strong>innovation in Kenya and across Africa</strong>. I believe we have the minds, the hunger, and the creativity to compete on the global stage. What we need is someone willing to go first — to shine a light and leave a path others can follow.</p>
+            <p>That's what I'm doing. That's why I'm building <strong>Dzovah</strong> — a company rooted in the belief that African engineers can build world-class technology. Not copies of what exists elsewhere, but original solutions born from our own challenges and ambitions.</p>
+          </div>
+        </div>
+
+        <div class="vision-side" data-animate="slide-left">
+          <div class="vision-company-card">
+            <div class="vision-company-logo">D</div>
+            <h4>Dzovah</h4>
+            <p class="vision-company-tagline">Building the future from Africa</p>
+            <div class="vision-company-line"></div>
+            <p class="vision-company-desc">A technology company driven by the mission to prove that world-changing innovation can — and will — originate from this continent.</p>
+          </div>
+
+          <div class="vision-callout" data-animate="fade-in" data-delay="200">
+            <div class="vision-callout-icon"></div>
+            <h4>This Isn't a Solo Mission</h4>
+            <p>I know I can't do this single-handedly — and I don't have to. If you share this vision, you can make it happen in your own way. Whether it's through <strong>policy</strong>, <strong>education</strong>, <strong>mentorship</strong>, <strong>investment</strong>, or simply <strong>building something great</strong> — you don't have to be an engineer, and you don't have to contact me directly.</p>
+            <p class="vision-callout-highlight">Just do what you can, wherever you are, to push Kenya and Africa forward as a real force in global technology.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="vision-pillars" data-animate="slide-up" data-delay="100">
+        <div class="vision-pillar">
+          <div class="vision-pillar-icon"></div>
+          <h5>Inspire</h5>
+          <p>Show young Africans that building real technology is possible — not someday, but right now.</p>
+        </div>
+        <div class="vision-pillar">
+          <div class="vision-pillar-icon"></div>
+          <h5>Build</h5>
+          <p>Ship products that solve real problems with world-class engineering and security.</p>
+        </div>
+        <div class="vision-pillar">
+          <div class="vision-pillar-icon"></div>
+          <h5>Leave a Path</h5>
+          <p>Open-source knowledge, share the journey, and create opportunities for others to follow and surpass.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-header" data-animate="slide-up">
+        <span class="section-tag">&lt;contact&gt;</span>
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="section-line"></div>
+        <p class="section-subtitle">Ready to work together? Reach out through any of these channels.</p>
+      </div>
+      <div class="contact-grid">
+        <a href="https://wa.me/254755457582" target="_blank" rel="noopener" class="contact-card" data-animate="slide-up" data-delay="0">
+          <div class="contact-card-icon whatsapp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <h4>WhatsApp</h4>
+          <p>+254 755 457 582</p>
+          <span class="contact-card-action">Message me &rarr;</span>
+        </a>
+
+        <a href="https://x.com/electramagus" target="_blank" rel="noopener" class="contact-card" data-animate="slide-up" data-delay="100">
+          <div class="contact-card-icon twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </div>
+          <h4>X (Twitter)</h4>
+          <p>@electramagus</p>
+          <span class="contact-card-action">Follow me &rarr;</span>
+        </a>
+
+        <a href="https://youtube.com/@electramagus" target="_blank" rel="noopener" class="contact-card" data-animate="slide-up" data-delay="200">
+          <div class="contact-card-icon youtube">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </div>
+          <h4>YouTube</h4>
+          <p>@electramagus</p>
+          <span class="contact-card-action">Watch my builds &rarr;</span>
+        </a>
+
+        <a href="https://instagram.com/electramagus" target="_blank" rel="noopener" class="contact-card" data-animate="slide-up" data-delay="300">
+          <div class="contact-card-icon instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 11-2.882 0 1.441 1.441 0 012.882 0z"/></svg>
+          </div>
+          <h4>Instagram</h4>
+          <p>@electramagus</p>
+          <span class="contact-card-action">See my work &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="#hero" class="footer-logo">
+          <span class="logo-bracket">&lt;</span>electra<span class="logo-accent">magus</span><span class="logo-bracket"> /&gt;</span>
+        </a>
+        <p class="footer-text">Designed &amp; built by <strong>ElectraMagus</strong> — with precision, security, and a bit of obsession.</p>
+        <div class="footer-socials">
+          <a href="https://x.com/electramagus" target="_blank" rel="noopener" aria-label="X/Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://youtube.com/@electramagus" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="https://instagram.com/electramagus" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 11-2.882 0 1.441 1.441 0 012.882 0z"/></svg>
+          </a>
+          <a href="https://github.com/electramagus" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+        </div>
+        <p class="footer-copy">&copy; 2026 ElectraMagus. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
