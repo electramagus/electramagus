@@ -1323,6 +1323,13 @@ strong {
   box-shadow: 0 0 30px var(--accent-glow);
 }
 
+.dzovah-logo-img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  padding: 4px;
+}
+
 .vision-company-card h4 {
   font-family: var(--font-heading);
   font-size: 1.5rem;
