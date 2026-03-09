@@ -131,7 +131,7 @@
   updateRing();
 
   // Hover effect
-  document.querySelectorAll('a, button, .btn, .project-card, .highlight-card, .contact-card, .skill-tag').forEach(el => {
+  document.querySelectorAll('a, button, .btn, .project-card, .highlight-card, .contact-card, .skill-tag, .pricing-card, .pricing-breakdown-item, .pricing-why-item').forEach(el => {
     el.addEventListener('mouseenter', () => ring.classList.add('hover'));
     el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
   });
@@ -278,8 +278,8 @@
     });
   });
 
-  // ───────── TILT EFFECT ON PROJECT CARDS ─────────
-  document.querySelectorAll('.project-card, .highlight-card').forEach(card => {
+  // ───────── TILT EFFECT ON CARDS ─────────
+  document.querySelectorAll('.project-card, .highlight-card, .pricing-card, .pricing-why-item').forEach(card => {
     card.addEventListener('mousemove', e => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -294,6 +294,397 @@
     card.addEventListener('mouseleave', () => {
       card.style.transform = '';
     });
+  });
+
+  // ───────── TOS MODAL ─────────
+  const tosOverlay = document.getElementById('tosOverlay');
+  const tosClose = document.getElementById('tosClose');
+  const tosDecline = document.getElementById('tosDecline');
+  const tosAccept = document.getElementById('tosAccept');
+  const tosTitle = document.getElementById('tosTitle');
+  const tosSubtitle = document.getElementById('tosSubtitle');
+  const tosBody = document.getElementById('tosBody');
+
+  const whatsappLinks = {
+    1: "https://wa.me/254755457582?text=Hi%20ElectraMagus%2C%20I%27ve%20read%20the%20ToS%20and%20I%27m%20interested%20in%20the%20Code%20%26%20Go%20package.%20Let%27s%20book.",
+    2: "https://wa.me/254755457582?text=Hi%20ElectraMagus%2C%20I%27ve%20read%20the%20ToS%20and%20I%27m%20interested%20in%20the%20Full%20Managed%20package.%20Let%27s%20book.",
+    3: "https://wa.me/254755457582?text=Hi%20ElectraMagus%2C%20I%27ve%20read%20the%20ToS%20and%20I%20need%20a%20student%20project.%20Let%27s%20book%20a%20slot."
+  };
+
+  const tosContent = {
+    1: {
+      title: 'Terms of Service',
+      subtitle: 'TIER 1 — CODE & GO PACKAGE',
+      html: `
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">1</span>
+            <span class="tos-phase-title">Booking & Confirmation</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>Contact me via WhatsApp to express interest. I will confirm availability and whether I can take on your project <strong>within 2 business days</strong>.</p>
+            <p>If confirmed, we proceed to the briefing phase. If I cannot take it on, I will let you know immediately — no time wasted.</p>
+          </div>
+        </div>
+
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">2</span>
+            <span class="tos-phase-title">Briefing (5 Days)</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>You have <strong>5 days</strong> to describe exactly what you want built — the features, the users, the problem it solves, the platforms, and any design preferences.</p>
+            <p>This is your time to be as clear as possible. The more detail you give, the more accurate the final product will be. I will ask questions to fill any gaps.</p>
+          </div>
+        </div>
+
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">3</span>
+            <span class="tos-phase-title">Research & Planning (1 Week)</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>I take <strong>1 week</strong> to research your project — technical feasibility, architecture decisions, tools needed, and risks.</p>
+            <p>At the end of this week, I present you with:</p>
+            <ul>
+              <li>A clear breakdown of <strong>milestones</strong> (what gets built and in what order)</li>
+              <li>A realistic <strong>timeline estimate</strong> per milestone</li>
+              <li>The <strong>final agreed price</strong> within the KES 55,000 – 85,000 range</li>
+            </ul>
+            <p>If you approve the plan, we move to development. If not, we can adjust scope or part ways — no hard feelings, no charge for the research.</p>
+          </div>
+        </div>
+
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">4</span>
+            <span class="tos-phase-title">Development & Payment Schedule</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>Building starts <strong>only after you pay a 10% deposit</strong> of the agreed price. This is non-refundable and secures your slot.</p>
+            <p>Development follows the milestone plan:</p>
+            <ul>
+              <li>After each milestone, I demo the progress to you and give an estimate for the next milestone.</li>
+              <li>At <strong>50% project completion</strong>, you pay <strong>40% of the agreed price</strong>.</li>
+              <li>The remaining <strong>50%</strong> is paid <strong>on final delivery</strong> of the completed project.</li>
+            </ul>
+            <p><strong>Payment summary:</strong> 10% deposit → 40% at halfway → 50% on delivery.</p>
+          </div>
+        </div>
+
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">5</span>
+            <span class="tos-phase-title">Delivery & Handover</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>On final delivery, you receive the <strong>complete codebase</strong> (app + server if applicable), documented and ready for your team to deploy.</p>
+            <p>I will walk you through the architecture so you or your developers understand what was built and how to maintain it.</p>
+          </div>
+        </div>
+
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">6</span>
+            <span class="tos-phase-title">After Delivery</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>Once the codebase is handed over, <strong>you own the deployment and maintenance</strong>. I do not provide ongoing free support.</p>
+            <ul>
+              <li>Bug fixes discovered within <strong>14 days</strong> of handover related to the original scope are fixed free of charge.</li>
+              <li>Any new features, changes, or support beyond those 14 days are <strong>billed as new work</strong>.</li>
+              <li>Since I built the system and know the architecture, you can always hire me again — and it will be faster and cheaper than onboarding someone new.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tos-divider"></div>
+        <h4 class="tos-section-label">General Terms</h4>
+        <ul class="tos-general-list">
+          <li><strong>Scope changes:</strong> Any features or requirements added after the briefing phase will be quoted and billed separately. They may also extend the timeline.</li>
+          <li><strong>Communication:</strong> I will keep you updated at every milestone. I expect timely responses from you — delays on your side may push the delivery date.</li>
+          <li><strong>Intellectual property:</strong> You own the final product and codebase after full payment. Until full payment is received, the code remains my property.</li>
+          <li><strong>Confidentiality:</strong> I will not share your project details, business logic, or proprietary information with anyone.</li>
+          <li><strong>Cancellation:</strong> If you cancel mid-project, you pay for all milestones completed up to that point. The 10% deposit is non-refundable.</li>
+          <li><strong>Delays on my end:</strong> If I miss a milestone deadline, I will communicate the reason and revised timeline. Chronic delays give you the right to renegotiate.</li>
+          <li><strong>No guarantee of commercial success:</strong> I guarantee quality code and a working product. I do not guarantee downloads, revenue, or market performance.</li>
+        </ul>
+      `
+    },
+    2: {
+      title: 'Terms of Service',
+      subtitle: 'TIER 2 — FULL MANAGED PACKAGE',
+      html: `
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">1</span>
+            <span class="tos-phase-title">Booking & Confirmation</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>Contact me via WhatsApp to express interest. I will confirm availability and whether I can take on your project <strong>within 2 business days</strong>.</p>
+            <p>If confirmed, we proceed to the briefing phase. If I cannot take it on, I will let you know immediately — no time wasted.</p>
+          </div>
+        </div>
+
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">2</span>
+            <span class="tos-phase-title">Briefing (5 Days)</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>You have <strong>5 days</strong> to describe exactly what you want built — the features, the users, the problem it solves, the platforms, and any design preferences.</p>
+            <p>Don't worry if you're non-technical — I'll guide you through the process and ask the right questions. Just focus on describing your business and what you need the app to do.</p>
+          </div>
+        </div>
+
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">3</span>
+            <span class="tos-phase-title">Research & Planning (1 Week)</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>I take <strong>1 week</strong> to research your project — technical feasibility, architecture decisions, hosting requirements, and risks.</p>
+            <p>At the end of this week, I present you with:</p>
+            <ul>
+              <li>A clear breakdown of <strong>milestones</strong> (what gets built and in what order)</li>
+              <li>A realistic <strong>timeline estimate</strong> per milestone</li>
+              <li>The <strong>final agreed price</strong> within the KES 55,000 – 85,000 range (build cost), plus confirmation of the KES 15,000 monthly management fee</li>
+            </ul>
+            <p>If you approve the plan, we move to development. If not, we can adjust scope or part ways — no hard feelings, no charge for the research.</p>
+          </div>
+        </div>
+
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">4</span>
+            <span class="tos-phase-title">Development & Payment Schedule</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>Building starts <strong>only after you pay a 10% deposit</strong> of the agreed build price. This is non-refundable and secures your slot.</p>
+            <p>Development follows the milestone plan:</p>
+            <ul>
+              <li>After each milestone, I demo the progress to you and give an estimate for the next milestone.</li>
+              <li>At <strong>50% project completion</strong>, you pay <strong>40% of the agreed price</strong>.</li>
+              <li>The remaining <strong>50%</strong> is paid <strong>on final delivery</strong> of the completed project.</li>
+            </ul>
+            <p><strong>Payment summary:</strong> 10% deposit → 40% at halfway → 50% on delivery.</p>
+          </div>
+        </div>
+
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">5</span>
+            <span class="tos-phase-title">Delivery & Launch</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>On final delivery, I will:</p>
+            <ul>
+              <li>Deploy the server and set up hosting infrastructure</li>
+              <li>Publish the app to your Play Store / App Store accounts (you must provide developer account access)</li>
+              <li>Walk you through the product so you understand what it does and how it works</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">6</span>
+            <span class="tos-phase-title">Year 1 — Managed & Maintained</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>During Year 1 (starting from launch), the <strong>KES 15,000 monthly management fee</strong> covers:</p>
+            <ul>
+              <li>Server hosting, monitoring, and uptime management</li>
+              <li>App Store / Play Store management and updates</li>
+              <li>Reasonable feature improvements based on user reviews and feedback</li>
+              <li>Business pivot adjustments within the existing product direction</li>
+              <li>Bug fixes and performance improvements</li>
+            </ul>
+            <p><strong>What's NOT included in Year 1:</strong></p>
+            <ul>
+              <li>Full app rebuilds or major re-architecture</li>
+              <li>Third-party API costs, cloud overages, or store fees (you pay these directly)</li>
+              <li>New standalone modules or features outside the original scope</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">7</span>
+            <span class="tos-phase-title">After Year 1</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>After Year 1, feature updates and enhancements are <strong>billed based on complexity</strong>. The monthly management fee continues as long as you want me to host and manage the system.</p>
+            <p>If you decide to take over management yourself, I will hand over all access and documentation. After handover, the same Tier 1 post-delivery terms apply.</p>
+          </div>
+        </div>
+
+        <div class="tos-divider"></div>
+        <h4 class="tos-section-label">Account Ownership & Access</h4>
+        <ul class="tos-general-list">
+          <li><strong>You own everything:</strong> Your Play Store / App Store accounts, your domain, your brand assets — they are yours. I manage them with your authorization.</li>
+          <li><strong>Shared access:</strong> You will have visibility into your accounts at all times. I will never lock you out of your own product.</li>
+          <li><strong>Transition:</strong> If we part ways, I transfer all access, credentials, and documentation to you or your new team within 7 business days.</li>
+        </ul>
+
+        <h4 class="tos-section-label">General Terms</h4>
+        <ul class="tos-general-list">
+          <li><strong>Scope changes:</strong> Any features or requirements added after the briefing phase will be quoted and billed separately. They may also extend the timeline.</li>
+          <li><strong>Communication:</strong> I will keep you updated at every milestone. I expect timely responses from you — delays on your side may push the delivery date.</li>
+          <li><strong>Intellectual property:</strong> You own the final product after full payment. Until full payment is received, the code remains my property.</li>
+          <li><strong>Confidentiality:</strong> I will not share your project details, business logic, or proprietary information with anyone.</li>
+          <li><strong>Cancellation:</strong> If you cancel mid-project, you pay for all milestones completed up to that point. The 10% deposit is non-refundable.</li>
+          <li><strong>Management fee:</strong> The KES 15,000 monthly fee is billed monthly. If unpaid for 2+ months, I reserve the right to suspend hosting until resolved.</li>
+          <li><strong>Delays on my end:</strong> If I miss a milestone deadline, I will communicate the reason and revised timeline. Chronic delays give you the right to renegotiate.</li>
+          <li><strong>No guarantee of commercial success:</strong> I guarantee quality code and a working product. I do not guarantee downloads, revenue, or market performance.</li>
+        </ul>
+      `
+    },
+    3: {
+      title: 'Terms of Service',
+      subtitle: 'TIER 3 — COMRADE / STUDENT PROTOTYPES',
+      html: `
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">1</span>
+            <span class="tos-phase-title">Booking a Slot</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>Contact me via WhatsApp to book. Slot availability is <strong>not less than 4 days out</strong> — plan ahead, especially near exam season when demand is high.</p>
+            <p>I will confirm if your slot is available and what type of project you need (custom build or archive).</p>
+          </div>
+        </div>
+
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">2</span>
+            <span class="tos-phase-title">Concept Briefing (1 Day)</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>You have <strong>1 day</strong> to explain your project concept — what it does, who it's for, and what your university/lecturer expects.</p>
+            <p>For <strong>archive projects</strong>: just tell me which one you want and any modifications needed.</p>
+            <p>For <strong>custom builds</strong>: describe the full concept clearly. This is the only briefing window.</p>
+          </div>
+        </div>
+
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">3</span>
+            <span class="tos-phase-title">Research & Feasibility (2 Days)</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>I take <strong>2 days</strong> to assess feasibility and plan the build. I'll present what I can deliver within the prototype scope and timeline.</p>
+            <p>If approved, we move to payment and building.</p>
+          </div>
+        </div>
+
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">4</span>
+            <span class="tos-phase-title">Payment & Building</span>
+          </div>
+          <div class="tos-phase-body">
+            <p><strong>For custom builds (KES 5,000):</strong></p>
+            <ul>
+              <li>Pay <strong>KES 1,000 upfront</strong> to start the build.</li>
+              <li>Pay the remaining <strong>KES 4,000 on delivery</strong> (total: KES 5,000 for custom, or adjusted total for others).</li>
+              <li>Delivery within <strong>2 weeks</strong> of payment.</li>
+            </ul>
+            <p><strong>For archive projects (KES 1,000 – 3,000):</strong></p>
+            <ul>
+              <li><strong>Full payment upfront.</strong> Archive goods are pre-built and delivered immediately after payment.</li>
+              <li>Add-ons (+KES 500 per unique feature) are also paid upfront.</li>
+              <li>UI/appearance changes on archive projects are <strong>free</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">5</span>
+            <span class="tos-phase-title">Delivery</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>You receive the <strong>full codebase</strong> (app + server if applicable) and the <strong>APK</strong>.</p>
+            <p>I'll give you a brief walkthrough of how it works so you can explain it during your presentation or defense.</p>
+          </div>
+        </div>
+
+        <div class="tos-phase">
+          <div class="tos-phase-header">
+            <span class="tos-phase-number">6</span>
+            <span class="tos-phase-title">After Delivery</span>
+          </div>
+          <div class="tos-phase-body">
+            <p>These are <strong>functional prototypes</strong> — built for grading, demos, and proof-of-concept. They are not designed for production scale (may not handle 100k+ users).</p>
+            <ul>
+              <li>Minor questions about how the code works within <strong>7 days</strong> of delivery — I'll answer them.</li>
+              <li>No ongoing support, bug fixes, or feature additions after delivery unless paid for separately.</li>
+              <li>If you need production scale later, upgrade to Tier 1 or Tier 2.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tos-divider"></div>
+        <h4 class="tos-section-label">General Terms</h4>
+        <ul class="tos-general-list">
+          <li><strong>Strict no-refund policy:</strong> All digital archive goods are non-refundable once delivered or shared. Custom builds are non-refundable once building has started.</li>
+          <li><strong>As-is delivery:</strong> Prototypes are delivered as functional working builds. No warranty of scalability or commercial-grade quality is implied.</li>
+          <li><strong>Not for commercial deployment:</strong> If you plan to monetize or launch publicly, you need a Tier 1 or Tier 2 build.</li>
+          <li><strong>Confidentiality:</strong> I will not share your project concept with others. However, similar archive projects may be sold to multiple students (they are not exclusive).</li>
+          <li><strong>Academic integrity:</strong> You are responsible for understanding the code. I provide the build — how you present it to your institution is your responsibility.</li>
+          <li><strong>Cancellation:</strong> If you cancel a custom build after payment, the KES 1,000 deposit is non-refundable. Unused balance is returned only if no work has started.</li>
+        </ul>
+      `
+    }
+  };
+
+  function openTosModal(tier) {
+    const data = tosContent[tier];
+    if (!data) return;
+    tosTitle.textContent = data.title;
+    tosSubtitle.textContent = data.subtitle;
+    tosBody.innerHTML = data.html;
+    tosAccept.href = whatsappLinks[tier];
+    tosOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    tosBody.scrollTop = 0;
+  }
+
+  function closeTosModal() {
+    tosOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Wire up Get Started buttons
+  document.querySelectorAll('[data-tos-tier]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tier = parseInt(btn.dataset.tosTier);
+      openTosModal(tier);
+    });
+  });
+
+  tosClose.addEventListener('click', closeTosModal);
+  tosDecline.addEventListener('click', closeTosModal);
+
+  // Accept button click handler
+  tosAccept.addEventListener('click', (e) => {
+    const href = tosAccept.getAttribute('href');
+    if (href && href !== '#') {
+      e.preventDefault();
+      window.open(href, '_blank');
+    }
+  });
+
+  tosOverlay.addEventListener('click', e => {
+    if (e.target === tosOverlay) closeTosModal();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && tosOverlay.classList.contains('active')) {
+      closeTosModal();
+    }
   });
 
   // ───────── CONSOLE EASTER EGG ─────────
