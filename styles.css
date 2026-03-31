@@ -593,6 +593,7 @@ strong {
   position: relative;
   padding: 120px 0;
   z-index: 1;
+  background: transparent;
 }
 
 .section-header {
@@ -635,7 +636,7 @@ strong {
 
 /* ---------- ABOUT ---------- */
 .about {
-  background: var(--bg-primary);
+  background: transparent;
 }
 
 .about-grid {
@@ -751,7 +752,7 @@ strong {
 
 /* ---------- SKILLS ---------- */
 .skills {
-  background: var(--bg-dark);
+  background: transparent;
 }
 
 .skills-grid {
@@ -865,7 +866,7 @@ strong {
 
 /* ---------- PROJECTS ---------- */
 .projects {
-  background: var(--bg-primary);
+  background: transparent;
 }
 
 /* Featured */
@@ -1229,7 +1230,7 @@ strong {
 
 /* ---------- VISION & GOALS ---------- */
 .vision {
-  background: var(--bg-primary);
+  background: transparent;
   overflow: hidden;
 }
 
@@ -1443,7 +1444,7 @@ strong {
 
 /* ---------- CONTACT (section) ---------- */
 .contact {
-  background: var(--bg-dark);
+  background: transparent;
 }
 
 .contact-grid {
@@ -1621,7 +1622,7 @@ strong {
 
 /* ---------- PRICING & SERVICES ---------- */
 .pricing {
-  background: var(--bg-primary);
+  background: transparent;
   overflow: hidden;
 }
 

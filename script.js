@@ -161,14 +161,8 @@
   // ───────── TYPING EFFECT ─────────
   const typewriterEl = document.getElementById('typewriter');
   const phrases = [
-    'Full-Stack Developer',
-    'Android Engineer',
-    'White-Hat Hacker',
-    'Embedded Systems Builder',
-    'Robotics Engineer',
-    'Cyber Security Specialist',
-    'Electronics Designer',
-    'Problem Solver'
+    'Hacks and Systems Guy',
+    'Explorer'
   ];
   let phraseIndex = 0;
   let charIndex = 0;
